@@ -1,3 +1,7 @@
+# REACT
+
+Application allows to search and load pictures from unsplash.
+
 # CICD
 
-Mainly to practice CICD to travis and AWS beanstalk
+CICD to travis and AWS beanstalk
