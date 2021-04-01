@@ -1,40 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class SearchBar extends React.Component {
-    state = { term: ''};
+const SearchBar = ({onAppSubmit}) => {
+    const [term, setTerm] = useState('');
 
-    
     //onFormSubmit = (event) => { 
     // call it using reference this. this.onFormSubmit
-    onFormSubmit (event) {            
+    const onFormSubmit = (event) => {            
         event.preventDefault();         
-
-        this.props.onAppSubmit(this.state.term);
+        onAppSubmit(term);
     }
-
-    /*
-    onInputChange(event) {
-        event.target.value
-    }*/
 
     // passing callback function reference that do not use onInputChange()
     // everytime change will update the state
     // 
-    render() {
-        return (
-            <div className= "ui segment">
-            <form onSubmit={(event) => this.onFormSubmit(event) } className= "ui form">
-                <div className="field">
-                    <label>Image Search</label>
-                <input 
-                    type="text" 
-                    value ={this.state.term}
-                    onChange={e => this.setState({term : e.target.value})}></input> 
-                </div>
-            </form>
+    return (
+        <div className= "ui segment">
+        <form onSubmit={(event) => onFormSubmit(event) } className= "ui form">
+            <div className="field">
+                <label>Image Search</label>
+            <input 
+                type="text" 
+                value ={term}
+                onChange={e => setTerm(e.target.value)}></input> 
             </div>
-            );
-    }
-}
+        </form>
+        </div>
+        );
+};
 
 export default SearchBar;
